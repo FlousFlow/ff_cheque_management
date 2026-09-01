@@ -10,7 +10,7 @@ the standard **Bank Reconciliation**.
 - Version: `18.0.1.0.0` — targets Odoo 18.0 Community (works on Enterprise)
 - Depends on: `account` only
 - License: LGPL-3
-- Repository: <https://github.com/FlousFlow/ff-egyptian-cheque-management#18.0>
+- Repository: <https://github.com/FlousFlow/ff_cheque_management#18.0>
 
 ---
 
