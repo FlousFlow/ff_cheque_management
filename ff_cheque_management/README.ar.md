@@ -10,7 +10,7 @@ Odoo 18 — من غير نظام محاسبي موازي ومن غير أي تع
 - الإصدار: `18.0.1.0.0` — يعمل على Odoo 18.0 Community (وعلى Enterprise)
 - يعتمد على: `account` فقط
 - الرخصة: LGPL-3
-- المستودع: <https://github.com/FlousFlow/ff_cheque_management#18.0>
+- المستودع: <https://github.com/FlousFlow/ff-egyptian-cheque-management#18.0>
 
 ---
 
