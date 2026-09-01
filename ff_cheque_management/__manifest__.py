@@ -2,7 +2,7 @@
 # Part of ff_cheque_management. See LICENSE file for full copyright and licensing details.
 {
     'name': 'Egyptian Cheque Management',
-    'version': '18.0.1.2.0',
+    'version': '18.0.1.2.1',
     'category': 'Accounting/Accounting',
     'summary': 'Manage incoming and outgoing cheques inside the standard Odoo payments and bank reconciliation flow.',
     'description': """
@@ -16,7 +16,8 @@ partial payments, audit trail and bank matching keep working exactly as in
 vanilla Odoo. See the module page (static/description/index.html) for the
 full feature list.
     """,
-    'author': 'FlousFlow',
+    'author': 'Flous Flow',
+    'maintainers': ['FlousFlow'],
     'website': 'https://github.com/FlousFlow',
     'license': 'LGPL-3',
     'depends': ['account'],

@@ -3,6 +3,14 @@
 All notable changes to this module are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [18.0.1.2.1] — 2026-09-01
+
+### Changed
+- Author unified as **Flous Flow** (apps.odoo.com search groups all company
+  modules under one author).
+- Added store cover image (`static/description/cover.png`, 1200x630) shown on
+  the module page and used as the apps store thumbnail.
+
 ## [18.0.1.2.0] — 2026-09-01
 
 ### Added
