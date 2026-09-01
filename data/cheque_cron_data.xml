@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Dedicated activity type so the cron only ever manages its own
+             activities and never touches user-created To-Dos. -->
+        <record id="mail_activity_type_cheque_due" model="mail.activity.type">
+            <field name="name">Cheque Due</field>
+            <field name="icon">fa-money</field>
+            <field name="sequence">22</field>
+            <field name="res_model">account.payment</field>
+            <field name="delay_count">-1</field>
+        </record>
+
+        <record id="ir_cron_cheque_due_alerts" model="ir.cron">
+            <field name="name">Cheques: Due Date Alerts</field>
+            <field name="model_id" ref="account.model_account_payment"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_cheque_due_alerts()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="priority">10</field>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

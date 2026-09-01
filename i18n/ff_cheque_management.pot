@@ -1,0 +1,829 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ff_cheque_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20260810\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-01 00:49+0000\n"
+"PO-Revision-Date: 2026-09-01 00:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid ") and is still awaiting the bank reconciliation."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_kanban
+msgid "<i class=\"fa fa-calendar\" role=\"img\" aria-label=\"Due Date\" title=\"Due Date\"/>"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_register_form_cheque
+msgid ""
+"<span>This cheque number is already registered with the same bank: </span>"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_res_company__outgoing_cheque_account_id
+#: model:ir.model.fields,help:ff_cheque_management.field_res_config_settings__outgoing_cheque_account_id
+msgid ""
+"Account where cheques issued to vendors are parked until they are cashed "
+"through bank reconciliation (e.g. Issued Cheques / Cheques Payable). Must be"
+" reconcilable."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.res_config_settings_view_form_cheque
+msgid ""
+"Account where cheques issued to vendors are parked until they are cashed "
+"through the bank reconciliation (e.g. Issued Cheques). Must be reconcilable."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_res_company__incoming_cheque_account_id
+#: model:ir.model.fields,help:ff_cheque_management.field_res_config_settings__incoming_cheque_account_id
+msgid ""
+"Account where cheques received from customers are parked until they are "
+"collected through bank reconciliation (e.g. Cheques Under Collection). Must "
+"be reconcilable."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.res_config_settings_view_form_cheque
+msgid ""
+"Account where cheques received from customers are parked until they are "
+"collected through the bank reconciliation (e.g. Cheques Under Collection). "
+"Must be reconcilable."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_due_date
+msgid "Also used as the date maturity of the cheque account journal item."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__amount
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__amount
+msgid "Amount"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+#: code:addons/ff_cheque_management/wizard/account_payment_register.py:0
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment_register__cheque_bank_id
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Bank"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_deposit_journal_id
+msgid "Bank journal where the cheque was deposited. Tracking only."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_maturity_status
+msgid "Based on the cheque due date compared to today."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_bounce_date
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__bounce_date
+msgid "Bounce Date"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "Bounce Information"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_bounce_reason
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__reason
+msgid "Bounce Reason"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_status__bounced
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Bounced"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_status__cancelled
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Cancelled"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "Cheque"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+msgid "Cheque %s is DUE TODAY (%s)"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+msgid "Cheque %s is OVERDUE since %s (%s day(s))"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+msgid "Cheque %s is due on %s (in %s day(s))"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:account.payment.method,name:ff_cheque_management.payment_method_ff_cheque_inbound
+msgid "Cheque - Incoming"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:account.payment.method,name:ff_cheque_management.payment_method_ff_cheque_outbound
+msgid "Cheque - Outgoing"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_bank_id
+msgid "Cheque Bank"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_bounced
+msgid "Cheque Bounced"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_date
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment_register__cheque_date
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_received_list
+msgid "Cheque Date"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_register_form_cheque
+msgid "Cheque Details"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:mail.activity.type,name:ff_cheque_management.mail_activity_type_cheque_due
+msgid "Cheque Due"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+#: code:addons/ff_cheque_management/wizard/account_payment_register.py:0
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_due_date
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment_register__cheque_due_date
+msgid "Cheque Due Date"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "Cheque Information"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.res_config_settings_view_form_cheque
+msgid "Cheque Management"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_notes
+msgid "Cheque Notes"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+#: code:addons/ff_cheque_management/wizard/account_payment_register.py:0
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_number
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment_register__cheque_number
+msgid "Cheque Number"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__payment_id
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__payment_id
+msgid "Cheque Payment"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_status
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Cheque Status"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.actions.act_window,help:ff_cheque_management.action_ff_cheque_dashboard
+msgid "Cheque dashboard"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+msgid ""
+"Cheque details cannot be modified after the payment is confirmed. Cancel the"
+" payment and register a new cheque instead."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_bounce_wizard.py:0
+msgid ""
+"Cheque marked as <b>Bounced</b> on %(date)s.<br/>Reason: %(reason)s<br/>The "
+"payment has been cancelled with the standard mechanism and all "
+"reconciliations have been removed: the partner balance is due again."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_deposit_wizard.py:0
+msgid ""
+"Cheque marked as <b>Deposited</b> on %(date)s in %(journal)s.<br/>No "
+"accounting impact: the cheque remains awaiting collection through the bank "
+"reconciliation."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.ui.menu,name:ff_cheque_management.menu_ff_cheques
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_graph
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_pivot
+msgid "Cheques"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.actions.act_window,name:ff_cheque_management.action_ff_cheque_dashboard
+#: model:ir.ui.menu,name:ff_cheque_management.menu_ff_cheques_dashboard
+msgid "Cheques Dashboard"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_duplicate_ids
+msgid ""
+"Cheques already registered with the same number, bank and payment type."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.actions.server,name:ff_cheque_management.ir_cron_cheque_due_alerts_ir_actions_server
+msgid "Cheques: Due Date Alerts"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_status__cleared
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Cleared"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model,name:ff_cheque_management.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__company_id
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__company_id
+msgid "Company"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model,name:ff_cheque_management.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__create_uid
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__create_date
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__currency_id
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_received_list
+msgid "Customer"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__days_to_maturity
+msgid "Days To Maturity"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__days_to_maturity
+msgid "Days remaining until the cheque due date. Negative when overdue."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment_register__cheque_date
+msgid "Defaults to the payment date."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_received_list
+msgid "Deposit Bank"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_deposit_journal_id
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__deposit_journal_id
+msgid "Deposit Bank Journal"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_deposit_date
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__deposit_date
+msgid "Deposit Date"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "Deposit Information"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_status__deposited
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Deposited"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_status
+msgid ""
+"Derived from the payment state, bank matching and the cheque lifecycle. A "
+"cheque is only 'Cleared' once it has been matched through bank "
+"reconciliation."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.cheque_bounce_wizard_form
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.cheque_deposit_wizard_form
+msgid "Discard"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__display_name
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment_register__cheque_drawer_name
+msgid "Drawer"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_drawer_name
+msgid "Drawer Name"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Due Month"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Due Next 30 Days"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Due Next 7 Days"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_maturity_status__due_today
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Due Today"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.actions.act_window,help:ff_cheque_management.action_ff_cheque_dashboard
+msgid ""
+"Every column is a cheque status with the number of cheques in it.\n"
+"                    Use the filters to focus on Due Today, Next 7/30 Days or Overdue."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_deposit_date
+msgid ""
+"Filled by 'Mark as Deposited'. Operational tracking only, no accounting "
+"impact."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Group By"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__id
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/res_company.py:0
+#: model:ir.model.fields,field_description:ff_cheque_management.field_res_company__incoming_cheque_account_id
+#: model:ir.model.fields,field_description:ff_cheque_management.field_res_config_settings__incoming_cheque_account_id
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.res_config_settings_view_form_cheque
+msgid "Incoming Cheques Account"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_date
+msgid ""
+"Incoming: date the cheque was received. Outgoing: date the cheque was "
+"issued."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_drawer_name
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment_register__cheque_drawer_name
+msgid ""
+"Incoming: the customer who gave the cheque. Outgoing: the company issuing "
+"the cheque."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_register_form_cheque
+msgid "Internal notes about this cheque..."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__is_cheque_payment
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment_register__is_cheque_payment
+msgid "Is Cheque Payment"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_issued_list
+msgid "Issue Date"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_status__issued
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Issued"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.actions.act_window,name:ff_cheque_management.action_ff_issued_cheques
+#: model:ir.ui.menu,name:ff_cheque_management.menu_ff_issued_cheques
+msgid "Issued Cheques"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model,name:ff_cheque_management.model_account_journal
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Journal"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__write_uid
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_bounce_wizard__write_date
+#: model:ir.model.fields,field_description:ff_cheque_management.field_cheque_deposit_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model,name:ff_cheque_management.model_cheque_bounce_wizard
+msgid "Mark Cheque as Bounced"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model,name:ff_cheque_management.model_cheque_deposit_wizard
+msgid "Mark Cheque as Deposited"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.cheque_bounce_wizard_form
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "Mark as Bounced"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.cheque_deposit_wizard_form
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "Mark as Deposited"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_maturity_status
+msgid "Maturity Status"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.actions.act_window,help:ff_cheque_management.action_ff_issued_cheques
+msgid "No issued cheques yet"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.actions.act_window,help:ff_cheque_management.action_ff_received_cheques
+msgid "No received cheques yet"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_maturity_status__not_due
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Not Due"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment_register__cheque_notes
+msgid "Notes"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/account_payment_register.py:0
+msgid ""
+"One cheque must match exactly one payment. Register one cheque at a time by "
+"selecting a single document, or enable 'Group Payments' to pay several "
+"documents with the same cheque."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_bounce_wizard.py:0
+msgid "Only Accounting Administrators can mark a cheque as bounced."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_deposit_wizard.py:0
+msgid "Only incoming cheques can be marked as deposited."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/res_company.py:0
+#: model:ir.model.fields,field_description:ff_cheque_management.field_res_company__outgoing_cheque_account_id
+#: model:ir.model.fields,field_description:ff_cheque_management.field_res_config_settings__outgoing_cheque_account_id
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.res_config_settings_view_form_cheque
+msgid "Outgoing Cheques Account"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_maturity_status__overdue
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Overdue"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Partner"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model,name:ff_cheque_management.model_account_payment_register
+msgid "Pay"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Payment"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_issued_list
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_received_list
+msgid "Payment Number"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Payment Type"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model,name:ff_cheque_management.model_account_payment
+msgid "Payments"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_status__received
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_payment_search
+msgid "Received"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.actions.act_window,name:ff_cheque_management.action_ff_received_cheques
+#: model:ir.ui.menu,name:ff_cheque_management.menu_ff_received_cheques
+msgid "Received Cheques"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.actions.act_window,help:ff_cheque_management.action_ff_received_cheques
+msgid ""
+"Register a customer payment with the 'Cheque - Incoming' method to track\n"
+"                    the cheque until it is collected through the bank reconciliation."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.actions.act_window,help:ff_cheque_management.action_ff_issued_cheques
+msgid ""
+"Register a vendor payment with the 'Cheque - Outgoing' method to track\n"
+"                    the cheque until it is cashed through the bank reconciliation."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields.selection,name:ff_cheque_management.selection__account_payment__cheque_maturity_status__settled
+msgid "Settled"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment__cheque_duplicate_ids
+#: model:ir.model.fields,field_description:ff_cheque_management.field_account_payment_register__cheque_duplicate_ids
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_register_form_cheque
+msgid "Similar Cheques"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__is_cheque_payment
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment_register__is_cheque_payment
+msgid ""
+"Technical field, True when the selected payment method uses the cheque code."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/res_company.py:0
+msgid "The %s (%s) is deprecated and cannot be used."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/res_company.py:0
+msgid ""
+"The %s (%s) must be set as reconcilable: cheques stay 'In Process' on this "
+"account until the bank reconciliation clears them."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/res_company.py:0
+msgid "The %s cannot be a receivable or payable account (%s)."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/res_company.py:0
+msgid ""
+"The %s cannot be the default account of a bank, cash or credit journal (%s)."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment__cheque_bank_id
+#: model:ir.model.fields,help:ff_cheque_management.field_account_payment_register__cheque_bank_id
+msgid "The bank the cheque is drawn on."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_bounce_wizard.py:0
+msgid ""
+"The cheque is already matched with a bank transaction. Unreconcile/reverse "
+"the bank transaction first."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_deposit_wizard.py:0
+msgid "The deposit journal must belong to the same company as the cheque."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/models/account_payment.py:0
+msgid "The following cheque details are required on cheque payment %s: %s."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/account_payment_register.py:0
+msgid "The following cheque details are required: %s."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model:ir.model.fields,help:ff_cheque_management.field_cheque_bounce_wizard__currency_id
+#: model:ir.model.fields,help:ff_cheque_management.field_cheque_deposit_wizard__currency_id
+msgid "The payment's currency."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_bounce_wizard.py:0
+msgid "This cheque has already been marked as bounced."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_deposit_wizard.py:0
+msgid "This cheque has already been marked as deposited on %s."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_deposit_wizard.py:0
+msgid "This cheque has already bounced."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "This cheque is DUE TODAY ("
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "This cheque is OVERDUE: it was due on"
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_deposit_wizard.py:0
+msgid "This cheque is already cleared through the bank reconciliation."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_bounce_wizard.py:0
+msgid "This cheque payment has already been cancelled."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_deposit_wizard.py:0
+msgid "This cheque payment has been cancelled."
+msgstr ""
+
+#. module: ff_cheque_management
+#. odoo-python
+#: code:addons/ff_cheque_management/wizard/cheque_bounce_wizard.py:0
+#: code:addons/ff_cheque_management/wizard/cheque_deposit_wizard.py:0
+msgid "This payment is not a cheque payment."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.ff_cheque_issued_list
+msgid "Vendor"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.view_account_payment_form_cheque
+msgid "and it is not matched with a bank transaction yet."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.res_config_settings_view_form_cheque
+msgid "e.g. Cheques Under Collection"
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.cheque_bounce_wizard_form
+msgid "e.g. Insufficient funds / signature mismatch..."
+msgstr ""
+
+#. module: ff_cheque_management
+#: model_terms:ir.ui.view,arch_db:ff_cheque_management.res_config_settings_view_form_cheque
+msgid "e.g. Issued Cheques"
+msgstr ""

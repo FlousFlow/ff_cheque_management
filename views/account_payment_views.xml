@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_account_payment_form_cheque" model="ir.ui.view">
+            <field name="name">account.payment.form.inherit.ff_cheque_management</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='unmark_as_sent']" position="after">
+                    <button name="action_open_cheque_deposit_wizard" string="Mark as Deposited" type="object"
+                            groups="account.group_account_invoice"
+                            invisible="not is_cheque_payment or payment_type != 'inbound' or cheque_status != 'received' or state not in ('in_process', 'paid')"/>
+                    <button name="action_open_cheque_discount_wizard" string="Discount" type="object"
+                            groups="account.group_account_invoice"
+                            invisible="not is_cheque_payment or payment_type != 'inbound' or cheque_status not in ('received', 'deposited') or state not in ('in_process', 'paid')"/>
+                    <button name="action_open_cheque_endorse_wizard" string="Endorse" type="object"
+                            groups="account.group_account_invoice"
+                            invisible="not is_cheque_payment or payment_type != 'inbound' or cheque_status not in ('received', 'deposited') or state not in ('in_process', 'paid')"/>
+                    <button name="action_open_cheque_bounce_wizard" string="Mark as Bounced" type="object"
+                            groups="account.group_account_manager"
+                            invisible="not is_cheque_payment or cheque_status in ('bounced', 'cancelled') or state not in ('in_process', 'paid')"/>
+                </xpath>
+                <xpath expr="//sheet" position="before">
+                    <div role="alert" class="alert alert-danger" invisible="not is_cheque_payment or cheque_maturity_status != 'overdue' or cheque_bounced or state == 'canceled'">
+                        <span class="fw-bold">This cheque is OVERDUE: it was due on <field name="cheque_due_date"/> and it is not matched with a bank transaction yet.</span>
+                    </div>
+                    <div role="alert" class="alert alert-warning" invisible="not is_cheque_payment or cheque_maturity_status != 'due_today' or cheque_bounced or state == 'canceled'">
+                        <span class="fw-bold">This cheque is DUE TODAY (<field name="cheque_due_date"/>) and is still awaiting the bank reconciliation.</span>
+                    </div>
+                    <div role="alert" class="alert alert-warning" invisible="not cheque_duplicate_ids">
+                        <span>This cheque number is already registered with the same bank: </span>
+                        <field name="cheque_duplicate_ids" widget="x2many_buttons" string="Similar Cheques"/>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='id'][@invisible='1']" position="after">
+                    <field name="is_cheque_payment" invisible="1"/>
+                    <field name="cheque_status" invisible="1"/>
+                    <field name="cheque_bounced" invisible="1"/>
+                    <field name="cheque_duplicate_ids" invisible="1"/>
+                </xpath>
+                <xpath expr="//notebook[@name='payment_notebook']" position="inside">
+                    <page string="Cheque" name="cheque_page" invisible="not is_cheque_payment">
+                        <group name="cheque_information_group" string="Cheque Information">
+                            <group>
+                                <field name="cheque_number" readonly="state != 'draft'"/>
+                                <field name="cheque_bank_id" readonly="state != 'draft'"/>
+                                <field name="cheque_date" readonly="state != 'draft'"/>
+                                <field name="cheque_due_date" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="cheque_drawer_name" readonly="state != 'draft'"/>
+                                <field name="cheque_partner_id" readonly="state != 'draft'"/>
+                                <field name="cheque_status"/>
+                                <field name="cheque_maturity_status"/>
+                                <field name="days_to_maturity"/>
+                            </group>
+                            <field name="cheque_notes" readonly="state != 'draft'" placeholder="Internal notes about this cheque..."/>
+                        </group>
+                        <group name="cheque_discount_group" string="Discount Information (توريق)"
+                               invisible="not cheque_discount_move_id">
+                            <field name="cheque_discount_date" readonly="1"/>
+                            <field name="cheque_discount_journal_id" readonly="1"/>
+                            <field name="cheque_discount_fees" readonly="1"/>
+                            <field name="cheque_discount_move_id" readonly="1"/>
+                        </group>
+                        <group name="cheque_endorsement_group" string="Endorsement Information (تظهير)"
+                               invisible="not cheque_endorsed_move_id">
+                            <field name="cheque_endorsed_partner_id" readonly="1"/>
+                            <field name="cheque_endorsed_move_id" readonly="1"/>
+                        </group>
+                        <group name="cheque_deposit_group" string="Deposit Information"
+                               invisible="payment_type != 'inbound' or not cheque_deposit_date">
+                            <field name="cheque_deposit_date" readonly="1"/>
+                            <field name="cheque_deposit_journal_id" readonly="1"/>
+                        </group>
+                        <group name="cheque_bounce_group" string="Bounce Information"
+                               invisible="not cheque_bounced">
+                            <field name="cheque_bounce_date" readonly="1"/>
+                            <field name="cheque_bounce_reason" readonly="1"/>
+                            <field name="cheque_bounce_move_id" readonly="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- == Deposit wizard ============================================ -->
+        <record id="cheque_deposit_wizard_form" model="ir.ui.view">
+            <field name="name">cheque.deposit.wizard.form</field>
+            <field name="model">cheque.deposit.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Mark as Deposited">
+                    <group>
+                        <group>
+                            <field name="payment_id" readonly="1" force_save="1"/>
+                            <field name="amount"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="deposit_date"/>
+                            <field name="deposit_journal_id" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Mark as Deposited" name="action_mark_deposited" type="object"
+                                class="oe_highlight" data-hotkey="q"/>
+                        <button string="Discard" class="btn btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- == Bounce wizard ============================================= -->
+        <record id="cheque_bounce_wizard_form" model="ir.ui.view">
+            <field name="name">cheque.bounce.wizard.form</field>
+            <field name="model">cheque.bounce.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Mark as Bounced">
+                    <group>
+                        <group>
+                            <field name="payment_id" readonly="1" force_save="1"/>
+                            <field name="amount"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="bounce_date"/>
+                        </group>
+                        <group>
+                            <field name="reason" placeholder="e.g. Insufficient funds / signature mismatch..."/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Mark as Bounced" name="action_mark_bounced" type="object"
+                                class="oe_highlight" data-hotkey="q"/>
+                        <button string="Discard" class="btn btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- == Discount wizard (توريق) =================================== -->
+        <record id="cheque_discount_wizard_form" model="ir.ui.view">
+            <field name="name">cheque.discount.wizard.form</field>
+            <field name="model">cheque.discount.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Discount Cheque">
+                    <group>
+                        <group>
+                            <field name="payment_id" readonly="1" force_save="1"/>
+                            <field name="amount"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="discount_date"/>
+                            <field name="discount_journal_id" options="{'no_create': True}"/>
+                            <field name="fees_amount"/>
+                            <field name="fees_account_id"
+                                   invisible="fees_amount == 0"
+                                   required="fees_amount &gt; 0"
+                                   options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Discount Cheque" name="action_discount_cheque" type="object"
+                                class="oe_highlight" data-hotkey="q"/>
+                        <button string="Discard" class="btn btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- == Endorse wizard (تظهير) ==================================== -->
+        <record id="cheque_endorse_wizard_form" model="ir.ui.view">
+            <field name="name">cheque.endorse.wizard.form</field>
+            <field name="model">cheque.endorse.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Endorse Cheque">
+                    <group>
+                        <group>
+                            <field name="payment_id" readonly="1" force_save="1"/>
+                            <field name="amount"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="endorse_date"/>
+                            <field name="vendor_id" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Endorse Cheque" name="action_endorse_cheque" type="object"
+                                class="oe_highlight" data-hotkey="q"/>
+                        <button string="Discard" class="btn btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </odoo>
+

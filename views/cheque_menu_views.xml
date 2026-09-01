@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- == Search view ============================================== -->
+        <record id="ff_cheque_payment_search" model="ir.ui.view">
+            <field name="name">account.payment.search.cheque</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <search string="Cheques">
+                    <field name="name" string="Payment" filter_domain="['|', ('name', 'ilike', self), ('memo', 'ilike', self)]"/>
+                    <field name="cheque_number"/>
+                    <field name="cheque_drawer_name"/>
+                    <field name="partner_id"/>
+                    <field name="cheque_bank_id"/>
+                    <field name="journal_id"/>
+                    <filter string="Due Today" name="filter_due_today"
+                            domain="[('cheque_due_date', '=', context_today().strftime('%Y-%m-%d')), ('cheque_status', 'not in', ('cleared', 'bounced', 'cancelled'))]"/>
+                    <filter string="Due Next 7 Days" name="filter_due_next_7_days"
+                            domain="[('cheque_due_date', '&gt;=', context_today().strftime('%Y-%m-%d')), ('cheque_due_date', '&lt;=', (context_today() + relativedelta(days=7)).strftime('%Y-%m-%d')), ('cheque_status', 'not in', ('cleared', 'bounced', 'cancelled'))]"/>
+                    <filter string="Due Next 30 Days" name="filter_due_next_30_days"
+                            domain="[('cheque_due_date', '&gt;=', context_today().strftime('%Y-%m-%d')), ('cheque_due_date', '&lt;=', (context_today() + relativedelta(days=30)).strftime('%Y-%m-%d')), ('cheque_status', 'not in', ('cleared', 'bounced', 'cancelled'))]"/>
+                    <filter string="Overdue" name="filter_overdue"
+                            domain="[('cheque_due_date', '&lt;', context_today().strftime('%Y-%m-%d')), ('cheque_status', 'not in', ('cleared', 'bounced', 'cancelled'))]"/>
+                    <separator/>
+                    <filter string="Received" name="filter_received" domain="[('cheque_status', '=', 'received')]"/>
+                    <filter string="Issued" name="filter_issued" domain="[('cheque_status', '=', 'issued')]"/>
+                    <filter string="Deposited" name="filter_deposited" domain="[('cheque_status', '=', 'deposited')]"/>
+                    <filter string="Cleared" name="filter_cleared" domain="[('cheque_status', '=', 'cleared')]"/>
+                    <filter string="Discounted" name="filter_discounted" domain="[('cheque_status', '=', 'discounted')]"/>
+                    <filter string="Endorsed" name="filter_endorsed" domain="[('cheque_status', '=', 'endorsed')]"/>
+                    <filter string="Bounced" name="filter_bounced" domain="[('cheque_status', '=', 'bounced')]"/>
+                    <filter string="Cancelled" name="filter_cancelled" domain="[('cheque_status', '=', 'cancelled')]"/>
+                    <separator/>
+                    <filter string="Not Due" name="filter_not_due"
+                            domain="[('cheque_due_date', '&gt;', context_today().strftime('%Y-%m-%d')), ('cheque_status', 'not in', ('cleared', 'bounced', 'cancelled'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Bank" name="group_cheque_bank" context="{'group_by': 'cheque_bank_id'}"/>
+                        <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Due Month" name="group_due_month" context="{'group_by': 'cheque_due_date:month'}"/>
+                        <filter string="Journal" name="group_journal" context="{'group_by': 'journal_id'}"/>
+                        <filter string="Cheque Status" name="group_cheque_status" context="{'group_by': 'cheque_status'}"/>
+                        <filter string="Payment Type" name="group_payment_type" context="{'group_by': 'payment_type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- == Received cheques list ==================================== -->
+        <record id="ff_cheque_received_list" model="ir.ui.view">
+            <field name="name">account.payment.list.received.cheques</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <list decoration-danger="cheque_maturity_status == 'overdue' or cheque_status == 'bounced'"
+                      decoration-warning="cheque_maturity_status == 'due_today'"
+                      decoration-success="cheque_status == 'cleared'"
+                      sample="1">
+                    <field name="name" string="Payment Number"/>
+                    <field name="partner_id" string="Customer"/>
+                    <field name="cheque_number"/>
+                    <field name="cheque_bank_id"/>
+                    <field name="amount"/>
+                    <field name="currency_id" column_invisible="1"/>
+                    <field name="cheque_date" string="Cheque Date"/>
+                    <field name="cheque_due_date"/>
+                    <field name="cheque_maturity_status" optional="show"/>
+                    <field name="cheque_status"/>
+                    <field name="cheque_deposit_journal_id" optional="hide" string="Deposit Bank"/>
+                    <field name="journal_id"/>
+                    <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- == Issued cheques list ====================================== -->
+        <record id="ff_cheque_issued_list" model="ir.ui.view">
+            <field name="name">account.payment.list.issued.cheques</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <list decoration-danger="cheque_maturity_status == 'overdue' or cheque_status == 'bounced'"
+                      decoration-warning="cheque_maturity_status == 'due_today'"
+                      decoration-success="cheque_status == 'cleared'"
+                      sample="1">
+                    <field name="name" string="Payment Number"/>
+                    <field name="partner_id" string="Vendor"/>
+                    <field name="cheque_number"/>
+                    <field name="cheque_bank_id"/>
+                    <field name="amount"/>
+                    <field name="currency_id" column_invisible="1"/>
+                    <field name="cheque_date" string="Issue Date"/>
+                    <field name="cheque_due_date"/>
+                    <field name="cheque_maturity_status" optional="show"/>
+                    <field name="cheque_status"/>
+                    <field name="journal_id"/>
+                    <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- == Dashboard (kanban grouped by cheque status = counts per column) -->
+        <record id="ff_cheque_kanban" model="ir.ui.view">
+            <field name="name">account.payment.kanban.cheque</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <kanban sample="1" class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                    <field name="currency_id"/>
+                    <field name="cheque_number"/>
+                    <field name="cheque_due_date"/>
+                    <field name="cheque_maturity_status"/>
+                    <field name="cheque_status"/>
+                    <templates>
+                        <t t-name="card">
+                            <div class="row mb-1">
+                                <div class="col-7">
+                                    <strong class="fw-bolder"><field name="cheque_number"/></strong>
+                                </div>
+                                <div class="col-5 text-end">
+                                    <field name="cheque_maturity_status" widget="label_selection"
+                                           options="{'classes': {'overdue': 'danger', 'due_today': 'warning', 'not_due': 'info', 'settled': 'success', 'discounted': 'primary', 'endorsed': 'primary'}}"/>
+                                </div>
+                            </div>
+                            <field name="partner_id"/>
+                            <div class="row">
+                                <div class="col-7">
+                                    <field name="amount" widget="monetary"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </div>
+                                <div class="col-5 text-end">
+                                    <i class="fa fa-calendar" role="img" aria-label="Due Date" title="Due Date"/>
+                                    <field name="cheque_due_date"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="ff_cheque_graph" model="ir.ui.view">
+            <field name="name">account.payment.graph.cheque</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <graph string="Cheques" sample="1">
+                    <field name="cheque_due_date" interval="month"/>
+                    <field name="amount" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="ff_cheque_pivot" model="ir.ui.view">
+            <field name="name">account.payment.pivot.cheque</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <pivot string="Cheques" sample="1">
+                    <field name="cheque_status" type="row"/>
+                    <field name="cheque_due_date" interval="month" type="col"/>
+                    <field name="amount" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="action_ff_cheque_dashboard" model="ir.actions.act_window">
+            <field name="name">Cheques Dashboard</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_mode">kanban,graph,pivot,list</field>
+            <field name="search_view_id" ref="ff_cheque_payment_search"/>
+            <field name="domain">[('is_cheque_payment', '=', True)]</field>
+            <field name="context">{
+                'list_view_ref': 'ff_cheque_management.ff_cheque_received_list',
+                'kanban_view_ref': 'ff_cheque_management.ff_cheque_kanban',
+                'group_by': 'cheque_status',
+            }</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Cheque dashboard</p>
+                <p>
+                    Every column is a cheque status with the number of cheques in it.
+                    Use the filters to focus on Due Today, Next 7/30 Days or Overdue.
+                </p>
+            </field>
+        </record>
+
+        <!-- == Actions =================================================== -->
+        <record id="action_ff_received_cheques" model="ir.actions.act_window">
+            <field name="name">Received Cheques</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_mode">list,form,kanban,graph,pivot</field>
+            <field name="search_view_id" ref="ff_cheque_payment_search"/>
+            <field name="domain">[('is_cheque_payment', '=', True), ('payment_type', '=', 'inbound')]</field>
+            <field name="context">{
+                'list_view_ref': 'ff_cheque_management.ff_cheque_received_list',
+                'default_payment_type': 'inbound',
+                'default_partner_type': 'customer',
+                'ff_default_cheque': 1,
+            }</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">No received cheques yet</p>
+                <p>
+                    Register a customer payment with the 'Cheque - Incoming' method to track
+                    the cheque until it is collected through the bank reconciliation.
+                </p>
+            </field>
+        </record>
+
+        <record id="action_ff_issued_cheques" model="ir.actions.act_window">
+            <field name="name">Issued Cheques</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_mode">list,form,kanban,graph,pivot</field>
+            <field name="search_view_id" ref="ff_cheque_payment_search"/>
+            <field name="domain">[('is_cheque_payment', '=', True), ('payment_type', '=', 'outbound')]</field>
+            <field name="context">{
+                'list_view_ref': 'ff_cheque_management.ff_cheque_issued_list',
+                'default_payment_type': 'outbound',
+                'default_partner_type': 'supplier',
+                'ff_default_cheque': 1,
+            }</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">No issued cheques yet</p>
+                <p>
+                    Register a vendor payment with the 'Cheque - Outgoing' method to track
+                    the cheque until it is cashed through the bank reconciliation.
+                </p>
+            </field>
+        </record>
+
+        <!-- == Menus ===================================================== -->
+        <!-- No groups attribute: visibility follows the Accounting app, since
+             in Odoo 18 account.group_account_readonly is an independent
+             Settings toggle that is not implied by the manager group. -->
+        <menuitem id="menu_ff_cheques"
+                  name="Cheques"
+                  parent="account.menu_finance"
+                  sequence="6"/>
+        <menuitem id="menu_ff_cheques_dashboard"
+                  action="action_ff_cheque_dashboard"
+                  parent="menu_ff_cheques"
+                  sequence="5"/>
+        <menuitem id="menu_ff_received_cheques"
+                  action="action_ff_received_cheques"
+                  parent="menu_ff_cheques"
+                  sequence="10"/>
+        <menuitem id="menu_ff_issued_cheques"
+                  action="action_ff_issued_cheques"
+                  parent="menu_ff_cheques"
+                  sequence="20"/>
+
+</odoo>

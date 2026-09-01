@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_account_payment_register_form_cheque" model="ir.ui.view">
+            <field name="name">account.payment.register.form.inherit.ff_cheque_management</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='available_partner_bank_ids'][@invisible='1']" position="after">
+                    <field name="is_cheque_payment" invisible="1"/>
+                    <field name="cheque_duplicate_ids" invisible="1"/>
+                </xpath>
+                <xpath expr="//footer" position="before">
+                    <div role="alert" class="alert alert-warning" invisible="not cheque_duplicate_ids">
+                        <span>This cheque number is already registered with the same bank: </span>
+                        <field name="cheque_duplicate_ids" widget="x2many_buttons" string="Similar Cheques"/>
+                    </div>
+                    <group name="cheque_details_group" string="Cheque Details"
+                           invisible="not is_cheque_payment or not can_edit_wizard">
+                        <group>
+                            <field name="cheque_number" required="is_cheque_payment"/>
+                            <field name="cheque_bank_id" required="is_cheque_payment"/>
+                            <field name="cheque_date"/>
+                            <field name="cheque_due_date" required="is_cheque_payment"/>
+                            <field name="cheque_drawer_name"/>
+                            <field name="cheque_partner_id"/>
+                        </group>
+                        <group>
+                            <field name="cheque_notes" placeholder="Internal notes about this cheque..."/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

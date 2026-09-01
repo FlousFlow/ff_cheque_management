@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cheque_deposit_wizard_account_invoice,cheque.deposit.wizard account.invoice,model_cheque_deposit_wizard,account.group_account_invoice,1,1,1,1
+access_cheque_discount_wizard_account_invoice,cheque.discount.wizard account.invoice,model_cheque_discount_wizard,account.group_account_invoice,1,1,1,1
+access_cheque_endorse_wizard_account_invoice,cheque.endorse.wizard account.invoice,model_cheque_endorse_wizard,account.group_account_invoice,1,1,1,1
+access_cheque_bounce_wizard_account_manager,cheque.bounce.wizard account.manager,model_cheque_bounce_wizard,account.group_account_manager,1,1,1,1

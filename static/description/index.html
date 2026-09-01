@@ -1,0 +1,78 @@
+<section style="max-width: 900px; margin: 0 auto; font-family: sans-serif;">
+    <h2 style="color: #714B67;">Egyptian Cheque Management</h2>
+    <p>
+        Professional cheque handling for Egypt, built entirely on top of the standard
+        Odoo <em>account.payment</em> and Bank Reconciliation flow. No parallel
+        accounting, no core modifications.
+    </p>
+
+    <h3 style="color: #714B67;">Highlights</h3>
+    <ul>
+        <li><strong>One Cheque = One Payment</strong> &mdash; every cheque is a real
+            <code>account.payment</code>, preserving reconciliation, partial payments,
+            audit trail and bank matching.</li>
+        <li><strong>Incoming Cheques</strong> &mdash; cheques received from customers are
+            parked on a configurable <em>Incoming Cheques Account</em> (Cheques Under
+            Collection). The bank is not touched until collection.</li>
+        <li><strong>Outgoing Cheques</strong> &mdash; cheques issued to vendors are parked
+            on a configurable <em>Outgoing Cheques Account</em> (Issued Cheques). The bank
+            is not debited at issue time.</li>
+        <li><strong>Standard Outstanding Accounts</strong> &mdash; the cheque accounts are
+            wired through the standard <code>account.payment.method.line.payment_account_id</code>,
+            exactly like any other payment method.</li>
+        <li><strong>Due Date Tracking</strong> &mdash; the cheque due date drives the
+            journal item maturity date. Maturity status (Not Due / Due Today / Overdue)
+            with filters for due today, next 7/30 days and overdue cheques.</li>
+        <li><strong>Bank Reconciliation Native</strong> &mdash; a cheque is only
+            <em>Cleared</em> when the standard bank reconciliation matches it
+            (Dr Bank / Cr Cheques for incoming, Dr Cheques / Cr Bank for outgoing).
+            No fake "Mark Cleared" button.</li>
+        <li><strong>Mark as Deposited</strong> &mdash; operational tracking of the deposit
+            date and bank journal for incoming cheques, with no accounting impact.</li>
+        <li><strong>Mark as Bounced</strong> &mdash; accounting-sound bounce for unmatched
+            cheques using the standard cancellation: reconciliations are removed and the
+            partner balance is restored. Already-matched cheques are protected.</li>
+        <li><strong>Duplicate Warning</strong> &mdash; warns on cheque numbers already
+            registered for the same bank and payment type, with a direct link.</li>
+        <li><strong>Multi Company</strong> &mdash; per-company cheque accounts and payment
+            method lines; strict company checks everywhere.</li>
+        <li><strong>Multi Currency</strong> &mdash; the cheque amount is always the payment
+            amount; Odoo handles currency conversion.</li>
+    </ul>
+
+    <h3 style="color: #714B67;">How it works</h3>
+    <ol>
+        <li>Set the <em>Incoming/Outgoing Cheques Accounts</em> in
+            Accounting &rarr; Configuration &rarr; Settings &rarr; Cheque Management.</li>
+        <li>Bank journals automatically receive the <em>Cheque - Incoming</em> and
+            <em>Cheque - Outgoing</em> payment methods.</li>
+        <li>Register a payment on an invoice and pick the cheque method: a
+            <em>Cheque Details</em> section asks for the number, bank, dates and drawer.</li>
+        <li>Follow the cheque from <em>Accounting &rarr; Cheques</em> (Received / Issued)
+            and clear it through your normal bank reconciliation.</li>
+    </ol>
+
+    <h3 style="color: #714B67;">Screenshots</h3>
+    <table style="width: 100%; border-spacing: 8px;">
+        <tr>
+            <td style="width: 50%; vertical-align: top;">
+                <img src="screenshots/cheques_dashboard.png" style="width: 100%; border: 1px solid #d8d8e0; border-radius: 6px;"
+                     alt="Cheques Dashboard"/>
+                <p style="text-align: center; color: #666;">Cheques Dashboard — kanban by status with counts</p>
+            </td>
+            <td style="width: 50%; vertical-align: top;">
+                <img src="screenshots/received_cheques.png" style="width: 100%; border: 1px solid #d8d8e0; border-radius: 6px;"
+                     alt="Received Cheques list"/>
+                <p style="text-align: center; color: #666;">Received Cheques with maturity colors</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%; vertical-align: top;">
+                <img src="screenshots/cheque_form_alerts.png" style="width: 100%; border: 1px solid #d8d8e0; border-radius: 6px;"
+                     alt="Cheque form with overdue alert"/>
+                <p style="text-align: center; color: #666;">Cheque tab with overdue alert &amp; lifecycle</p>
+            </td>
+            <td style="width: 50%; vertical-align: top;"></td>
+        </tr>
+    </table>
+</section>

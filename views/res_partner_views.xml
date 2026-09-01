@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_cheque" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.ff_cheque_management</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_cheque_payments" type="object" class="oe_stat_button"
+                        icon="fa-money" invisible="cheque_count == 0" groups="account.group_account_readonly">
+                    <div class="o_stat_info">
+                        <span class="o_stat_number"><field name="cheque_count"/></span>
+                        <span class="o_stat_text">Cheques</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
